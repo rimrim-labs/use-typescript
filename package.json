@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "learning typescript ",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
     "gulp": "^4.0.2"
   },
