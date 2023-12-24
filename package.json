@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "gulp": "^4.0.2"
+    "@babel/preset-env": "^7.23.6",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
