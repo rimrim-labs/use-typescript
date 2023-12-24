@@ -9,3 +9,10 @@
 
 # IntelliJ
 /.idea/
+
+# npm
+/node_modules/
+
+# build results
+/dist/
+/public/dist/
