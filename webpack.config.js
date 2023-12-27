@@ -5,22 +5,24 @@
  * 한 파일에 모든 모듈 번들링.
  */
 
-import webpack from 'webpack';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import TerserPlugin from 'terser-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 const config = {
   entry: './src/index.tsx',
   output: {
-    path: path.join(__dirname, 'dist/assets'),
+    path: path.join(dirname, 'dist/assets'),
     filename: 'bundle.js',
+    sourceMapFilename: 'bundle.map',
   },
   resolve: { extensions: ['.tsx', '.ts', '.js'] },
+  devtool: 'eval-cheap-source-map',
   module: {
     rules: [
       {
@@ -30,12 +32,8 @@ const config = {
       },
     ],
   },
+  optimization: { minimize: true, minimizer: [new TerserPlugin()] },
   plugins: [
-    // 자주 사용하는 모듈 미리 등록.
-    new webpack.ProvidePlugin({
-      React: 'react',
-    }),
-
     // 이전 번들링 결과 제거.
     new CleanWebpackPlugin(),
 
