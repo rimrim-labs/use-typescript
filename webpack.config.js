@@ -9,6 +9,7 @@ import webpack from 'webpack';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,6 +38,9 @@ const config = {
 
     // 이전 번들링 결과 제거.
     new CleanWebpackPlugin(),
+
+    // eslint 적용.
+    new ESLintWebpackPlugin(),
   ],
 };
 

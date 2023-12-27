@@ -4,7 +4,7 @@ module.exports = {
     es2020: true,
   },
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended',
-    'airbnb-base', 'airbnb-typescript/base'],
+    'airbnb', 'airbnb-typescript'],
   overrides: [
     {
       env: {
@@ -21,6 +21,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint'],
   rules: {},
