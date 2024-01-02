@@ -27,8 +27,12 @@ const config = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: /(node_modules)/,
+        exclude: [/(node_modules)/, path.join(dirname, 'ssrc/react/jsx/')],
         use: ['babel-loader', 'ts-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
