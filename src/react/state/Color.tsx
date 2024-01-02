@@ -9,14 +9,16 @@ interface Props {
   onRate: (f: number) => any;
 }
 
-const Color = ({ title, color, rating = 0, totalStars, onRate = (f) => f }: Props) => (
-  <section className="color">
-    <h1>{title}</h1>
-    <div className="color" style={{ backgroundColor: color }}></div>
-    <div>
-      <StarRating starSelected={rating} onRate={onRate} totalStars={totalStars} />
-    </div>
-  </section>
-);
+function Color({ title, color, rating = 0, totalStars, onRate = (f) => f }: Props) {
+  return (
+    <section className="color">
+      <h1>{title}</h1>
+      <div className="color" style={{ height: 50, backgroundColor: color }} />
+      <div>
+        <StarRating starSelected={rating} onRate={onRate} totalStars={totalStars} />
+      </div>
+    </section>
+  );
+}
 
 export default Color;
