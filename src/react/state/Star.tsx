@@ -1,5 +1,5 @@
 import React from 'react';
-import './common/Star.css';
+import { FaStar } from 'react-icons/fa';
 
 interface StarProps {
   selected: boolean;
@@ -10,7 +10,7 @@ interface StarProps {
  * 상태가 없는 함수형 컴포넌트.
  */
 function Star({ selected = false, onClick = (f) => f }: StarProps) {
-  return <div className={selected ? 'start selected' : 'selected'} onClick={onClick}></div>;
+  return <FaStar color={selected ? 'red' : 'grey'} onClick={onClick} />;
 }
 
 export default Star;
