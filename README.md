@@ -15,7 +15,7 @@
 |-------|------------------------|
 | ✅     | Learning JavaScript 완독 |
 |       | Learning React 완독      |
-|       | TypeScript Handbook 완독 |
+| ✅     | TypeScript Handbook 완독 |
 |       | 게시판 만들기                |
 |       | 개인 프로젝트 프론트 만들기        |
 
