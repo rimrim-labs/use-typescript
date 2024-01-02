@@ -1,5 +1,5 @@
 import React from 'react';
-import './common/star-style.css';
+import './common/Star.css';
 
 interface StarProps {
   selected: boolean;
