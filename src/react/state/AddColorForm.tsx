@@ -1,35 +1,56 @@
 import React from 'react';
 
-export default class AddColorForm extends React.Component<any, any> {
-  titleInput: React.RefObject<HTMLInputElement>;
+const DEFAULT_COLOR = '#000000';
 
-  colorInput: React.RefObject<HTMLInputElement>;
+interface States {
+  color: string;
+  title: string;
+}
 
+interface Props {
+  onSubmit: (title: string, color: string) => any;
+}
+
+export default class AddColorForm extends React.Component<Props, States> {
   constructor(props: any) {
     super(props);
-    // create a ref to store the textInput DOM element
-    this.titleInput = React.createRef();
-    this.colorInput = React.createRef();
+    this.state = {
+      color: DEFAULT_COLOR,
+      title: '',
+    };
+
+    this.submit = this.submit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   submit(event: React.FormEvent<HTMLFormElement>) {
+    const { onSubmit } = this.props;
+    const { color, title } = this.state;
+
     event.preventDefault();
+    onSubmit(title, color);
+    this.state = {
+      color: DEFAULT_COLOR,
+      title: '',
+    };
+  }
 
-    if (this.colorInput.current) {
-      this.colorInput.current.value = '#000000';
-    }
-
-    if (this.titleInput.current) {
-      this.titleInput.current.value = '';
-      this.titleInput.current.focus();
-    }
+  onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
   render() {
+    const { submit, onChange } = this;
     return (
-      <form onSubmit={this.submit}>
-        <input type="text" placeholder="색 이름..." ref={this.titleInput} required />
-        <input type="color" ref={this.colorInput} required />
+      <form onSubmit={submit}>
+        <input type="text" name="title" placeholder="색 이름..." onChange={(event) => onChange(event)} required />
+        <input type="color" name="color" onChange={(event) => onChange(event)} required />
         <button>추가</button>
       </form>
     );
