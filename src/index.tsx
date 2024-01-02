@@ -1,8 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Menu from './react/jsx/Menu';
-import data from './react/jsx/data/recipes';
+import App from './react/state/App';
 
 const container = document.getElementById('react-container');
 const root = createRoot(container!);
-root.render(<Menu recipes={data} title="맛있는 조리법" />);
+root.render(<App totalStars={5} />);
