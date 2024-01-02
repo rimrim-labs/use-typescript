@@ -30,6 +30,10 @@ const config = {
         exclude: /(node_modules)/,
         use: ['babel-loader', 'ts-loader'],
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   optimization: { minimize: true, minimizer: [new TerserPlugin()] },
