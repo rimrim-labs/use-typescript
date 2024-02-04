@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import * as ItemAPI from 'apis/ItemAPI';
-import { FetchItemResponse } from '../types/response/Item';
+import * as ItemAPI from '../apis/ItemAPI';
+import { FetchItemResponse } from '@/types/response/Item';
 
 interface Props {
   id: number;
