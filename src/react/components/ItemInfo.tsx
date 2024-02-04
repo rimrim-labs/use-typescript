@@ -7,17 +7,20 @@ interface Props {
 }
 
 export default function ItemInfo({ id }: Props) {
+  const [errorMsg, setErrorMsg] = useState<string>('');
   const [item, setItem] = useState<FetchItemResponse>();
 
   useEffect(() => {
     (async function () {
-      const { data } = await ItemAPI.fetchItem(id);
-      setItem(data);
+      await ItemAPI.fetchItem(id)
+        .then((res) => setItem(res.data))
+        .catch((err) => setErrorMsg(err.message));
     })();
   }, []);
 
   return item ? (
     <div>
+      {errorMsg ?? <div>{errorMsg}</div>}
       <h1>아이템 상세정보</h1>
       <div>상품명:{item.name}</div>
       <div>가격: {item.price}</div>
