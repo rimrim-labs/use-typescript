@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
-import { ServeErrorResponse } from '../../types/response/ServerResponse';
-import { BaseError } from '../../types/error/BaseError';
+import { ServeErrorResponse } from 'types/response/ServerResponse';
+import { BaseError } from 'types/error/BaseError';
 
 export const instance = axios.create({
   withCredentials: true,
